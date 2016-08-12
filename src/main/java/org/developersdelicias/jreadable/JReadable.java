@@ -36,4 +36,8 @@ class JReadable {
     boolean isNull() {
         return Objects.isNull(object);
     }
+
+    boolean isNotNull() {
+        return !isNull();
+    }
 }

@@ -9,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JReadableTest {
 
+    private static final Object FOO = new Object();
+
     @Test
     void inform_when_a_number_is_between_two_numbers() {
         assertTrue(valueOf(8).isBetween(5).and(10), "Should return true because 8 is between 5 and 10");
@@ -22,10 +24,12 @@ public class JReadableTest {
     @Test
     public void inform_when_an_object_is_null() throws Exception {
         assertTrue(object(null).isNull());
+        assertFalse(object(FOO).isNull());
     }
 
     @Test
     public void inform_when_an_object_is_not_null() throws Exception {
-        assertFalse(object(new Object()).isNull());
+        assertTrue(object(FOO).isNotNull());
+        assertFalse(object(null).isNotNull());
     }
 }
