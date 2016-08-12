@@ -8,12 +8,12 @@ class EachConditionInBooleanComparator extends BooleanComparator {
 
     @Override
     boolean isTrue() {
-        return falseWhenOneIs(false);
+        return condition(false).whenOneIs(false);
     }
 
     @Override
     boolean isFalse() {
-        return falseWhenOneIs(true);
+        return condition(false).whenOneIs(true);
     }
 
 }

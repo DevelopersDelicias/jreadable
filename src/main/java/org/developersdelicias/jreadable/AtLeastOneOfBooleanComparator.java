@@ -8,12 +8,12 @@ class AtLeastOneOfBooleanComparator extends BooleanComparator {
 
     @Override
     boolean isTrue() {
-        return trueWhenOneIs(true);
+        return condition(true).whenOneIs(true);
     }
 
     @Override
     boolean isFalse() {
-        return trueWhenOneIs(false);
+        return condition(true).whenOneIs(false);
     }
 
 }

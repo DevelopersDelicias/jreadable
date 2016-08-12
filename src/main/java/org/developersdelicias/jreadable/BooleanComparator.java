@@ -2,6 +2,7 @@ package org.developersdelicias.jreadable;
 
 abstract class BooleanComparator {
     private final boolean[] conditions;
+    private boolean conditionToReturn;
 
     BooleanComparator(boolean[] conditions) {
         this.conditions = conditions;
@@ -11,20 +12,18 @@ abstract class BooleanComparator {
 
     abstract boolean isFalse();
 
-    boolean trueWhenOneIs(boolean expectedCondition) {
-        return condition(true, expectedCondition, false);
-    }
-
-    boolean falseWhenOneIs(boolean expectedCondition) {
-        return condition(false, expectedCondition, true);
-    }
-
-    private boolean condition(boolean conditionToReturn, boolean expectedCondition, boolean defaultValueWhenNotExpected) {
+    boolean whenOneIs(boolean expectedCondition) {
         for (boolean condition : conditions) {
             if (condition == expectedCondition) {
                 return conditionToReturn;
             }
         }
-        return defaultValueWhenNotExpected;
+        return !conditionToReturn;
     }
+
+    BooleanComparator condition(boolean conditionToReturn) {
+        this.conditionToReturn = conditionToReturn;
+        return this;
+    }
+
 }
