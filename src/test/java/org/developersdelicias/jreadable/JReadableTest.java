@@ -64,4 +64,24 @@ public class JReadableTest {
         assertFalse(string("not a string").isNumeric(), "Should not be numeric");
         assertFalse(string(null).isNumeric(), "Should not be numeric");
     }
+
+    @Test
+    public void inform_when_all_conditions_are_true() {
+        assertTrue(eachConditionIn(true, true, true).isTrue());
+    }
+
+    @Test
+    public void inform_when_not_all_conditions_are_true() {
+        assertFalse(eachConditionIn(true, false, true).isTrue());
+    }
+
+    @Test
+    public void inform_when_all_conditions_are_false() {
+        assertTrue(eachConditionIn(false, false, false).isFalse());
+    }
+
+    @Test
+    public void inform_when_not_all_conditions_are_false() {
+        assertFalse(eachConditionIn(true, false, true).isFalse());
+    }
 }
