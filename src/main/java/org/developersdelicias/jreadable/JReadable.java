@@ -13,19 +13,12 @@ class JReadable {
     private int numberToCompare;
     private int firstNumber;
 
-
-    private boolean[] conditions = new boolean[0];
-
     private JReadable(int numberToCompare) {
         this.numberToCompare = numberToCompare;
     }
 
     private JReadable(Object object) {
         this.object = object;
-    }
-
-    private JReadable(boolean... conditions) {
-        this.conditions = conditions;
     }
 
     private JReadable(String string) {
@@ -77,24 +70,8 @@ class JReadable {
         return !isNumeric();
     }
 
-    static JReadable eachConditionIn(boolean... conditions) {
-        return new JReadable(conditions);
-    }
-
-    boolean isTrue() {
-        return falseWhenOneIs(false);
-    }
-
-    boolean isFalse() {
-        return falseWhenOneIs(true);
-    }
-
-    private boolean falseWhenOneIs(boolean expectedCondition) {
-        for (boolean condition : conditions) {
-            if (condition == expectedCondition)
-                return false;
-        }
-        return true;
+    static EachConditionInBooleanComparator eachConditionIn(boolean... conditions) {
+        return new EachConditionInBooleanComparator(conditions);
     }
 
     static AtLeastOneOfBooleanComparator atLeastOneOf(boolean... conditions) {
