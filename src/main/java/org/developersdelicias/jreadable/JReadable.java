@@ -82,16 +82,16 @@ class JReadable {
     }
 
     boolean isTrue() {
-        return falseWhen(false);
+        return falseWhenOneIs(false);
     }
 
     boolean isFalse() {
-        return falseWhen(true);
+        return falseWhenOneIs(true);
     }
 
-    private boolean falseWhen(boolean flag) {
+    private boolean falseWhenOneIs(boolean expectedCondition) {
         for (boolean condition : conditions) {
-            if (condition == flag)
+            if (condition == expectedCondition)
                 return false;
         }
         return true;
