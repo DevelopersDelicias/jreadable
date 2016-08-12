@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class JReadableTest {
 
     private static final Object FOO = new Object();
+    private static final Object BAR = new Object();
 
     @Test
     void inform_when_a_number_is_between_two_numbers() {
@@ -27,7 +28,6 @@ public class JReadableTest {
     }
 
     @Test
-
     void inform_when_an_object_is_null() {
         assertTrue(object(null).isNull());
         assertFalse(object(FOO).isNull());
@@ -37,5 +37,17 @@ public class JReadableTest {
     void inform_when_an_object_is_not_null() {
         assertTrue(object(FOO).isNotNull());
         assertFalse(object(null).isNotNull());
+    }
+
+    @Test
+    public void inform_when_two_objects_are_equal() {
+        assertTrue(object(FOO).isEqualsTo(FOO));
+        assertFalse(object(FOO).isEqualsTo(BAR));
+    }
+
+    @Test
+    public void inform_when_two_objects_are_not_equal() {
+        assertTrue(object(FOO).isNotEqualTo(BAR));
+        assertFalse(object(FOO).isNotEqualTo(FOO));
     }
 }

@@ -43,4 +43,12 @@ class JReadable {
     boolean isNotNull() {
         return !isNull();
     }
+
+    boolean isEqualsTo(Object otherObject) {
+        return Objects.equals(object, otherObject);
+    }
+
+    boolean isNotEqualTo(Object otherObject) {
+        return !isEqualsTo(otherObject);
+    }
 }
