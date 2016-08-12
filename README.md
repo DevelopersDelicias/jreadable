@@ -4,7 +4,7 @@ Provides an API to create a sequence of functions that improve readability of co
 
 ## Introduction
 
-We consider writting clean and readable code matters!
+We consider writing clean and readable code matters!
 
 For example, if you want to verify if a number is between to 5 and 10, you could write something like this:
 
