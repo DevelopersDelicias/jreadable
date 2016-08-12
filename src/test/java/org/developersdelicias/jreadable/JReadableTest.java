@@ -2,6 +2,7 @@ package org.developersdelicias.jreadable;
 
 import org.junit.jupiter.api.Test;
 
+import static org.developersdelicias.jreadable.JReadable.object;
 import static org.developersdelicias.jreadable.JReadable.valueOf;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,6 +17,15 @@ public class JReadableTest {
     @Test
     public void inform_when_a_number_is_not_between_two_numbers() {
         assertFalse(valueOf(2).isBetween(5).and(10), "Should return false because 2 is not between 5 and 10");
+    }
 
+    @Test
+    public void inform_when_an_object_is_null() throws Exception {
+        assertTrue(object(null).isNull());
+    }
+
+    @Test
+    public void inform_when_an_object_is_not_null() throws Exception {
+        assertFalse(object(new Object()).isNull());
     }
 }
