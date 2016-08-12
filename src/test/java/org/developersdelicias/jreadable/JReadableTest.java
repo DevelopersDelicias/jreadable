@@ -3,6 +3,7 @@ package org.developersdelicias.jreadable;
 import org.junit.jupiter.api.Test;
 
 import static org.developersdelicias.jreadable.JReadable.object;
+import static org.developersdelicias.jreadable.JReadable.string;
 import static org.developersdelicias.jreadable.JReadable.valueOf;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -40,14 +41,29 @@ public class JReadableTest {
     }
 
     @Test
-    public void inform_when_two_objects_are_equal() {
+    void inform_when_two_objects_are_equal() {
         assertTrue(object(FOO).isEqualsTo(FOO));
         assertFalse(object(FOO).isEqualsTo(BAR));
     }
 
     @Test
-    public void inform_when_two_objects_are_not_equal() {
+    void inform_when_two_objects_are_not_equal() {
         assertTrue(object(FOO).isNotEqualTo(BAR));
         assertFalse(object(FOO).isNotEqualTo(FOO));
+    }
+
+    @Test
+    void inform_when_a_string_is_a_number() {
+        assertTrue(string("12345").isNumeric(), "12345 should be numeric");
+        assertTrue(string("12.00").isNumeric(), "12.00 should be numeric");
+    }
+
+    @Test
+    void inform_when_a_string_is_not_a_number() {
+        assertTrue(string(null).isNotNumeric());
+        assertTrue(string("not a string").isNotNumeric(), "Should not be numeric");
+
+        assertFalse(string("not a string").isNumeric(), "Should not be numeric");
+        assertFalse(string(null).isNumeric(), "Should not be numeric");
     }
 }

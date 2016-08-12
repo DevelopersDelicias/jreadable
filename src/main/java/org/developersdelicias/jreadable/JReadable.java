@@ -4,9 +4,11 @@ import java.util.Objects;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
+import static org.apache.commons.lang3.math.NumberUtils.isNumber;
 
 class JReadable {
 
+    private String string;
     private Object object;
     private int numberToCompare;
     private int firstNumber;
@@ -17,6 +19,10 @@ class JReadable {
 
     public JReadable(Object object) {
         this.object = object;
+    }
+
+    public JReadable(String string) {
+        this.string = string;
     }
 
     static JReadable valueOf(int numberToCompare) {
@@ -50,5 +56,17 @@ class JReadable {
 
     boolean isNotEqualTo(Object otherObject) {
         return !isEqualsTo(otherObject);
+    }
+
+    static JReadable string(String string) {
+        return new JReadable(string);
+    }
+
+    boolean isNumeric() {
+        return isNumber(string);
+    }
+
+    boolean isNotNumeric() {
+        return !isNumeric();
     }
 }
