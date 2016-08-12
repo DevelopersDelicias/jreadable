@@ -2,9 +2,7 @@ package org.developersdelicias.jreadable;
 
 import org.junit.jupiter.api.Test;
 
-import static org.developersdelicias.jreadable.JReadable.object;
-import static org.developersdelicias.jreadable.JReadable.string;
-import static org.developersdelicias.jreadable.JReadable.valueOf;
+import static org.developersdelicias.jreadable.JReadable.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

@@ -17,11 +17,11 @@ class JReadable {
         this.numberToCompare = numberToCompare;
     }
 
-    public JReadable(Object object) {
+    private JReadable(Object object) {
         this.object = object;
     }
 
-    public JReadable(String string) {
+    private JReadable(String string) {
         this.string = string;
     }
 
