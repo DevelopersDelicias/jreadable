@@ -96,4 +96,8 @@ class JReadable {
         }
         return true;
     }
+
+    static AtLeastOneOfBooleanComparator atLeastOneOf(boolean... conditions) {
+        return new AtLeastOneOfBooleanComparator(conditions);
+    }
 }

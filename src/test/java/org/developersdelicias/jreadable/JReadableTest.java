@@ -84,4 +84,24 @@ public class JReadableTest {
     public void inform_when_not_all_conditions_are_false() {
         assertFalse(eachConditionIn(true, false, true).isFalse());
     }
+
+    @Test
+    public void inform_when_at_least_one_is_true()  {
+        assertTrue(atLeastOneOf(false, false, true).isTrue());
+    }
+
+    @Test
+    public void inform_when_at_least_one_is_not_true()  {
+        assertFalse(atLeastOneOf(false, false, false).isTrue());
+    }
+
+    @Test
+    public void inform_when_at_least_one_is_false()  {
+        assertTrue(atLeastOneOf(false, false, true).isFalse());
+    }
+
+    @Test
+    public void inform_when_at_least_one_is_not_false()  {
+        assertFalse(atLeastOneOf(true, true, true).isFalse());
+    }
 }
