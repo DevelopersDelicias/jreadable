@@ -2,11 +2,14 @@ package org.developersdelicias.jreadable;
 
 import java.util.Objects;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 class JReadable {
 
     private Object object;
     private int numberToCompare;
-    private int minRange;
+    private int firstNumber;
 
     private JReadable(int numberToCompare) {
         this.numberToCompare = numberToCompare;
@@ -20,13 +23,13 @@ class JReadable {
         return new JReadable(numberToCompare);
     }
 
-    JReadable isBetween(int minRange) {
-        this.minRange = minRange;
+    JReadable isBetween(int firstNumber) {
+        this.firstNumber = firstNumber;
         return this;
     }
 
-    boolean and(int maxRange) {
-        return numberToCompare >= minRange && numberToCompare <= maxRange;
+    boolean and(int secondNumber) {
+        return numberToCompare >= min(firstNumber, secondNumber) && numberToCompare <= max(firstNumber, secondNumber);
     }
 
     static JReadable object(Object object) {

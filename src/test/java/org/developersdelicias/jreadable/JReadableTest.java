@@ -17,18 +17,24 @@ public class JReadableTest {
     }
 
     @Test
-    public void inform_when_a_number_is_not_between_two_numbers() {
+    void inform_when_a_number_is_between_two_numbers_ignoring_order() {
+        assertTrue(valueOf(8).isBetween(10).and(5), "Should return true because 8 is between 5 and 10 even order is inverted");
+    }
+
+    @Test
+    void inform_when_a_number_is_not_between_two_numbers() {
         assertFalse(valueOf(2).isBetween(5).and(10), "Should return false because 2 is not between 5 and 10");
     }
 
     @Test
-    public void inform_when_an_object_is_null() throws Exception {
+
+    void inform_when_an_object_is_null() {
         assertTrue(object(null).isNull());
         assertFalse(object(FOO).isNull());
     }
 
     @Test
-    public void inform_when_an_object_is_not_null() throws Exception {
+    void inform_when_an_object_is_not_null() {
         assertTrue(object(FOO).isNotNull());
         assertFalse(object(null).isNotNull());
     }
