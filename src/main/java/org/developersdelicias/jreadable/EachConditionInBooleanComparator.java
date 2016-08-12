@@ -1,24 +1,19 @@
 package org.developersdelicias.jreadable;
 
-class EachConditionInBooleanComparator {
-    private boolean[] conditions;
+class EachConditionInBooleanComparator extends BooleanComparator {
 
     EachConditionInBooleanComparator(boolean[] conditions) {
-        this.conditions = conditions;
+        super(conditions);
     }
+
+    @Override
     boolean isTrue() {
         return falseWhenOneIs(false);
     }
 
+    @Override
     boolean isFalse() {
         return falseWhenOneIs(true);
     }
 
-    private boolean falseWhenOneIs(boolean expectedCondition) {
-        for (boolean condition : conditions) {
-            if (condition == expectedCondition)
-                return false;
-        }
-        return true;
-    }
 }
