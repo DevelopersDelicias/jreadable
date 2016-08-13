@@ -1,7 +1,5 @@
 package org.developersdelicias.jreadable;
 
-import java.util.Objects;
-
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static org.apache.commons.lang3.math.NumberUtils.isNumber;
@@ -9,7 +7,6 @@ import static org.apache.commons.lang3.math.NumberUtils.isNumber;
 class JReadable {
 
     private String string;
-    private Object object;
     private int numberToCompare;
     private int firstNumber;
 
@@ -17,9 +14,6 @@ class JReadable {
         this.numberToCompare = numberToCompare;
     }
 
-    private JReadable(Object object) {
-        this.object = object;
-    }
 
     private JReadable(String string) {
         this.string = string;
@@ -38,25 +32,10 @@ class JReadable {
         return numberToCompare >= min(firstNumber, secondNumber) && numberToCompare <= max(firstNumber, secondNumber);
     }
 
-    static JReadable object(Object object) {
-        return new JReadable(object);
+    static ObjectComparator object(Object object) {
+        return new ObjectComparator(object);
     }
 
-    boolean isNull() {
-        return Objects.isNull(object);
-    }
-
-    boolean isNotNull() {
-        return !isNull();
-    }
-
-    boolean isEqualsTo(Object otherObject) {
-        return Objects.equals(object, otherObject);
-    }
-
-    boolean isNotEqualTo(Object otherObject) {
-        return !isEqualsTo(otherObject);
-    }
 
     static JReadable string(String string) {
         return new JReadable(string);
